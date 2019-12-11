@@ -1,7 +1,7 @@
 /*
  * This file is part of Magenta Engine
  *
- * Copyright (C) 2016-2018 BlackPhrase
+ * Copyright (C) 2016-2019 BlackPhrase
  *
  * Magenta Engine is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,11 +26,11 @@
 namespace vgui3
 {
 
-class CPanel : public IPanel
+class CPanelHandler : public IPanel
 {
 public:
-	CPanel();
-	~CPanel();
+	CPanelHandler();
+	~CPanelHandler();
 	
 	void Init(VPANEL vguiPanel, IClientPanel *panel) override;
 
