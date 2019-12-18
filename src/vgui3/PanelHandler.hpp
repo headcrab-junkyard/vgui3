@@ -26,13 +26,15 @@
 namespace vgui3
 {
 
+class CPanel;
+
 class CPanelHandler : public IPanel
 {
 public:
 	CPanelHandler();
 	~CPanelHandler();
 	
-	void Init(VPANEL vguiPanel, IClientPanel *panel) override;
+	void Init(VPANEL vguiPanel, IClientPanel *apPanel) override;
 
 	void SetPos(VPANEL vguiPanel, int x, int y) override;
 	void GetPos(VPANEL vguiPanel, int &x, int &y) override;
@@ -53,14 +55,14 @@ public:
 	void SetInset(VPANEL vguiPanel, int left, int top, int right, int bottom) override;
 	void GetInset(VPANEL vguiPanel, int &left, int &top, int &right, int &bottom) override;
 
-	void SetVisible(VPANEL vguiPanel, bool state) override;
+	void SetVisible(VPANEL vguiPanel, bool abState) override;
 	bool IsVisible(VPANEL vguiPanel) override;
 
 	void SetParent(VPANEL vguiPanel, VPANEL newParent) override;
 
 	int GetChildCount(VPANEL vguiPanel) override;
 
-	VPANEL GetChild(VPANEL vguiPanel, int index) override;
+	VPANEL GetChild(VPANEL vguiPanel, int anIndex) override;
 	VPANEL GetParent(VPANEL vguiPanel) override;
 
 	void MoveToFront(VPANEL vguiPanel) override;
@@ -69,10 +71,10 @@ public:
 	bool HasParent(VPANEL vguiPanel, VPANEL potentialParent) override;
 
 	bool IsPopup(VPANEL vguiPanel) override;
-	void SetPopup(VPANEL vguiPanel, bool state) override;
+	void SetPopup(VPANEL vguiPanel, bool abState) override;
 
 	bool Render_GetPopupVisible(VPANEL vguiPanel) override;
-	void Render_SetPopupVisible(VPANEL vguiPanel, bool state) override;
+	void Render_SetPopupVisible(VPANEL vguiPanel, bool abState) override;
 
 	HScheme GetScheme(VPANEL vguiPanel) override;
 
@@ -81,8 +83,8 @@ public:
 
 	void DeletePanel(VPANEL vguiPanel) override;
 
-	void SetKeyBoardInputEnabled(VPANEL vguiPanel, bool state) override;
-	void SetMouseInputEnabled(VPANEL vguiPanel, bool state) override;
+	void SetKeyBoardInputEnabled(VPANEL vguiPanel, bool abState) override;
+	void SetMouseInputEnabled(VPANEL vguiPanel, bool abState) override;
 
 	bool IsKeyBoardInputEnabled(VPANEL vguiPanel) override;
 	bool IsMouseInputEnabled(VPANEL vguiPanel) override;
@@ -104,9 +106,9 @@ public:
 	VPANEL IsWithinTraverse(VPANEL vguiPanel, int x, int y, bool traversePopups) override;
 
 	void OnChildAdded(VPANEL vguiPanel, VPANEL child) override;
-	void OnSizeChanged(VPANEL vguiPanel, int newWide, int newTall) override;
+	void OnSizeChanged(VPANEL vguiPanel, int anNewWidth, int anNewHeight) override;
 
-	void InternalFocusChanged(VPANEL vguiPanel, bool lost) override;
+	void InternalFocusChanged(VPANEL vguiPanel, bool abLost) override;
 
 	bool RequestInfo(VPANEL vguiPanel, KeyValues *outputData) override;
 	void RequestFocus(VPANEL vguiPanel, int direction = 0) override;
@@ -120,14 +122,16 @@ public:
 	SurfacePlat *Plat(VPANEL vguiPanel) override;
 	void SetPlat(VPANEL vguiPanel, SurfacePlat *Plat) override;
 
-	Panel *GetPanel(VPANEL vguiPanel, const char *destinationModule) override;
+	Panel *GetPanel(VPANEL vguiPanel, const char *asDestModule) override;
 
 	bool IsEnabled(VPANEL vguiPanel) override;
-	void SetEnabled(VPANEL vguiPanel, bool state) override;
+	void SetEnabled(VPANEL vguiPanel, bool abState) override;
 
 	void *Client(VPANEL vguiPanel) override;
 
 	const char *GetModuleName(VPANEL vguiPanel) override;
+private:
+	inline CPanel *ToCPanel(VPANEL vguiPanel) const {return reinterpret_cast<CPanel*>(vguiPanel);}
 };
 
 }; // namespace vgui3
