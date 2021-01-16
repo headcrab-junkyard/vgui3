@@ -1,20 +1,20 @@
 /*
- * This file is part of Magenta Engine
+ * This file is part of VGUI3 library
  *
- * Copyright (C) 2018 BlackPhrase
+ * Copyright (C) 2018, 2021 BlackPhrase
  *
- * Magenta Engine is free software: you can redistribute it and/or modify
+ * VGUI3 library is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Magenta Engine is distributed in the hope that it will be useful,
+ * VGUI3 library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Magenta Engine. If not, see <http://www.gnu.org/licenses/>.
+ * along with VGUI3 library. If not, see <http://www.gnu.org/licenses/>.
 */
 
 /// @file
@@ -24,8 +24,109 @@
 namespace vgui3
 {
 
+CInputInternal gInputInternal;
+
+EXPOSE_SINGLE_INTERFACE_GLOBALVAR(CInputInternal, IInput, VGUI_INPUT_INTERFACE_VERSION);
+EXPOSE_SINGLE_INTERFACE_GLOBALVAR(CInputInternal, InputInternal, VGUI_INPUTINTERNAL_INTERFACE_VERSION);
+
 CInputInternal::CInputInternal() = default;
 CInputInternal::~CInputInternal() = default;
+
+void CInputInternal::SetMouseFocus(VPANEL newMouseFocus)
+{
+};
+
+void CInputInternal::SetMouseCapture(VPANEL panel)
+{
+};
+
+void CInputInternal::GetKeyCodeText(KeyCode code, char *buf, int buflen)
+{
+};
+
+VPANEL CInputInternal::GetFocus()
+{
+	return 0;
+};
+
+VPANEL CInputInternal::GetMouseOver()
+{
+	return 0;
+};
+
+void CInputInternal::SetCursorPos(int x, int y)
+{
+};
+
+void CInputInternal::GetCursorPos(int &x, int &y)
+{
+};
+
+bool CInputInternal::WasMousePressed(MouseCode code)
+{
+	return false;
+};
+
+bool CInputInternal::WasMouseDoublePressed(MouseCode code)
+{
+	return false;
+};
+
+bool CInputInternal::IsMouseDown(MouseCode code)
+{
+	return false;
+};
+
+void CInputInternal::SetCursorOveride(HCursor cursor)
+{
+};
+
+HCursor CInputInternal::GetCursorOveride()
+{
+	return 0;
+};
+
+bool CInputInternal::WasMouseReleased(MouseCode code)
+{
+	return false;
+};
+
+bool CInputInternal::WasKeyPressed(KeyCode code)
+{
+	return false;
+};
+
+bool CInputInternal::IsKeyDown(KeyCode code)
+{
+	return false;
+};
+
+bool CInputInternal::WasKeyTyped(KeyCode code)
+{
+	return false;
+};
+
+bool CInputInternal::WasKeyReleased(KeyCode code)
+{
+	return false;
+};
+
+VPANEL CInputInternal::GetAppModalSurface()
+{
+	return 0;
+};
+
+void CInputInternal::SetAppModalSurface(VPANEL panel)
+{
+};
+
+void CInputInternal::ReleaseAppModalSurface()
+{
+};
+
+void CInputInternal::GetCursorPosition(int &x, int &y)
+{
+};
 
 void CInputInternal::RunFrame()
 {
